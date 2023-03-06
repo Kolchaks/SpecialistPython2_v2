@@ -1,6 +1,6 @@
 class Point:
-    pass
-
+    self.x = x
+    self.y = y
 
 # Создадим несколько объектов-точек
 point1 = Point()
