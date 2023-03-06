@@ -2,7 +2,8 @@ def distance(p1: dict, p2: dict) -> float:
     """
     Расстояние между двумя точками
     """
-    # TODO: напишите тело функции
+    def dist_to(self, other_point: Point) -> float:
+        return ((self.x - other_point.x) ** 2 + (self.y - other_point.y) ** 2) ** 0.5
 
 
 # Даны две точки на координатной плоскости
