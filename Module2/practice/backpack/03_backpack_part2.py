@@ -13,7 +13,7 @@ class Item:
 
 class BackPack:  # рюкзак
 
-    def __init__(self):
+    def __init__(self, max_weight):
         self.items = []  # Предметы, которые хранятся в рюкзаке
         self.max_weight = max_weight
         self.cost = 0
