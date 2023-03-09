@@ -4,24 +4,16 @@ class Item:
         self.weight = weight  # Вес предмета, в килограммах
         self.cost = cost  # Цена предмета, пусть будет, в рублях
 
-    def __lt__(self, other):
-        """
-        Сортирует экземпляры класса по выбранному атрибуту
-        """
-        return self.weight < other.weight
-
     def show(self) -> str:
         """
         Возвращает строковое представление объекта Item
         """
         return f"{self.name} вес:{self.weight} цена:{self.cost}"
 
-
 class BackPack:  # рюкзак
     def __init__(self, max_weight):
         self.items = []  # Предметы, которые хранятся в рюкзаке
         self.max_weight = max_weight
-        self.current_weight = 0
         self.cost = 0
 
     def add_item(self, item: Item) -> None:
@@ -29,11 +21,9 @@ class BackPack:  # рюкзак
         Добавляет предмет(item) в этот рюкзак
         """
 
-        free_weight = self.max_weight - self.current_weight
+        free_weight = self.max_weight - self.sum_weight()
         if free_weight >= item.weight:
             self.items.append(item)
-            self.current_weight += item.weight
-            self.cost += item.cost
         else:
             print(f"Предмет {item.name} слишком тяжелый")
 
@@ -49,39 +39,34 @@ class BackPack:  # рюкзак
         """
         Возвращает суммарный вес всех предметов в рюкзаке
         """
-        summ_weight = sum([item.weight for item in self.items])
-
-        return summ_weight
+        return sum([item.weight for item in self.items])
 
     def sum_cost(self) -> int:
         """
         Возвращает суммарную стоимость всех предметов в рюкзаке
         """
-        summ_cost = sum([item.cost for item in self.items])
-
-        return summ_cost
+        return sum([item.cost for item in self.items])
 
 
 # Создаем предметы
-items = [
-    Item("Гиря", 25, 500),
-    Item("Арбуз", 4, 300),
-    Item("Ноутбук", 2.5, 22500),
-    Item("Кот", 0.5, 250),
-    Item("Трос", 3, 150),
-]
-
-items.sort()
+item_1 = Item("Гиря", 25, 500)
+item_2 = Item("Арбуз", 4, 300)
+item_3 = Item("Ноутбук", 2.5, 22500)
+item_4 = Item("Кот", 0.5, 250)
+item_5 = Item("Кирпич", 10, 100)
 
 # Создаем пустой рюкзак и указываем его вместимость(в кг)
-backpack = BackPack(max_weight=10)
+backpack = BackPack(max_weight=40)
 
-# Пытаемся добавлять максимальное кол-во предметов в рюкзак
-#  максимальное количество, с учетом ограничения общего веса в рюкзаке. Т.е. берем самые легкие предметы.
-for item in items:
-    backpack.add_item(item)
+# Пытаемся добавлять предметы в рюкзак
+backpack.add_item(item_1)
+backpack.add_item(item_2)
+backpack.add_item(item_3)
+backpack.add_item(item_4)
+backpack.add_item(item_5)
 
 # Выводим все предметы в рюкзаке
 backpack.show_items()
-backpack.sum_cost()
-backpack.cost
+
+# Выводим стоимость предметов в рюкзаке
+print(f'Стоимость предметов в рюкзаке: {backpack.sum_cost()}')
