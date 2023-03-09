@@ -30,19 +30,18 @@ class BackPack:  # рюкзак
         """
         for i, item in enumerate(self.items, 1):
             print(f"{i} {item.show()}")
-    # TODO: добавьте новое свойство .max_weight - максимальный суммарный вес предметов, которые можно положить в рюкзак
 
     def sum_weight(self) -> float:
         """
         Возвращает суммарный вес всех предметов в рюкзаке
         """
-        # TODO: реализуйте метод
+        return sum([item.weight for item in self.items])
 
     def sum_cost(self) -> int:
         """
         Возвращает суммарную стоимость всех предметов в рюкзаке
         """
-        # TODO: реализуйте метод
+        return sum([item.cost for item in self.items])
 
 
 # Создаем предметы
