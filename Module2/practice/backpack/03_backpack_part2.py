@@ -22,7 +22,15 @@ class BackPack:  # рюкзак
         """
         Добавляет предмет(item) в этот рюкзак
         """
-        self.items.append(item)
+# TODO: Если предмет не помещается в рюкзак по весу - вывести сообщение "Предмет {name} слишком тяжелый",
+#  и сам предмет не должен быть добавлен в рюкзак.
+#  Если предмет помещается, то добавляем его в рюкзак.
+
+        free_weight = self.max_weight - self.sum_weight()
+        if free_weight >= item.weight:
+            self.items.append(item)
+        else:
+            print(f"Предмет {item.name} слишком тяжёлый")
 
     def show_items(self) -> None:
         """
@@ -58,9 +66,6 @@ backpack.add_item(item1)
 backpack.add_item(item2)
 backpack.add_item(item3)
 backpack.add_item(item4)
-# TODO: Если предмет не помещается в рюкзак по весу - вывести сообщение "Предмет {name} слишком тяжелый",
-#  и сам предмет не должен быть добавлен в рюкзак.
-#  Если предмет помещает, то добавляем его в рюкзак.
 
 # Выводим все предметы в рюкзаке
 backpack.show_items()
