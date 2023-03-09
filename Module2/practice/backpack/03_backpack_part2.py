@@ -12,9 +12,24 @@ class Item:
 
 
 class BackPack:  # рюкзак
-    ...
 
-    # TODO: сюда копируем реализацию класса из предыдущего задания
+    def __init__(self):
+        self.items = []  # Предметы, которые хранятся в рюкзаке
+        self.max_weight = max_weight
+        self.cost = 0
+
+    def add_item(self, item: Item) -> None:
+        """
+        Добавляет предмет(item) в этот рюкзак
+        """
+        self.items.append(item)
+
+    def show_items(self) -> None:
+        """
+        Выводит(print'ом) все предметы, содержащиеся в рюкзаке в виде нумерованного списка
+        """
+        for i, item in enumerate(self.items, 1):
+            print(f"{i} {item.show()}")
     # TODO: добавьте новое свойство .max_weight - максимальный суммарный вес предметов, которые можно положить в рюкзак
 
     def sum_weight(self) -> float:
