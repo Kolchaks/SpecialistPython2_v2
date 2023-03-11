@@ -13,10 +13,14 @@ class Card:
 # Создадим несколько карт
 card1 = Card("10", "Hearts")
 card2 = Card("A", "Diamonds")
+card3 = Card("J", "Spades")
+card4 = Card("7", "Clubs")
 
 # Выведем карты на экран в виде: 10♥ и A♦
 print(card1.to_str())
 print(card2.to_str())
+print(card3.to_str())
+print(card4.to_str())
 
 # Пример, вывод иконок мастей:
 print('\u2661', '\u2665')
