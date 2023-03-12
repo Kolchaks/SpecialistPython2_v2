@@ -28,4 +28,4 @@ for suit in suits:
 for card in cards:
     str_cards.append(card.to_str())
 
-print(", ".join(str_cards))
+print(f"cards[{len(cards)}]: " + ", ".join(str_cards))
