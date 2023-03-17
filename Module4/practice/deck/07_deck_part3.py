@@ -24,9 +24,9 @@ class Card:
         Определяет старшую двух карт по рангу и масти
         """
 
-        value_volume = {'2': 1, '3': 2, '4': 3, '5': 4, '6': 5, '7': 6,
-                        '8': 7, '9': 8, '10': 9, 'J': 10, 'Q': 11, 'K': 12, 'A': 13}
-        suit_value = {"Hearts": 4, "Diamonds": 3, "Clubs": 2, "Spades": 1}
+        value_volume = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7,
+                        '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
+        suit_value = {"Spades": 1, "Clubs": 2, "Diamonds": 3, "Hearts": 4}
 
         if value_volume[self.value] == value_volume[other_card.value]:
             return suit_value[self.suit] > suit_value[other_card.suit]
