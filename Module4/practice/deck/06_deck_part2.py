@@ -35,8 +35,7 @@ class Deck:
 
     def draw(self, x: int):
         # TODO-1: Принцип работы данного метода прописан в 00_task_deck.md
-        hand = self.cards[:x]
-        self.cards = self.cards[x:]
+        hand, self.cards = self.cards[:x], self.cards[x:]
 
         return hand
 
