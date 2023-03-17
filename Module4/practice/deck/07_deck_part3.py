@@ -1,17 +1,80 @@
-class Card:
-    # TODO-0: сюда копируем реализацию класса карты из предыдущего задания
+import random
 
-    # TODO-1: реализуем новые методы
-    def more(self, other_card):
-        ...
+
+class Card:
+    def __init__(self, value, suit):
+        self.value = value  # Значение карты(2, 3... 10, J, Q, K, A)
+        self.suit = suit  # Масть карты
+
+    def to_str(self) -> str:
+        """
+        Возвращает карту в виде строки
+        """
+        suit_icons = {"Spades": '\u2660', "Clubs": '\u2663', "Diamonds": '\u2666', "Hearts": '\u2665'}
+        return f"{self.value}{suit_icons[self.suit]}"
+
+    def equal_suit(self, other_card) -> bool:
+        """
+        Сравнивает масти двух карт
+        """
+        return self.suit == other_card.suit
+
+    def more(self, other_card) -> bool:
+        """
+        Определяет старшую двух карт по рангу и масти
+        """
+
+        value_volume = {'2': 1, '3': 2, '4': 3, '5': 4, '6': 5, '7': 6,
+                        '8': 7, '9': 8, '10': 9, 'J': 10, 'Q': 11, 'K': 12, 'A': 13}
+        suit_value = {"Hearts": 4, "Diamonds": 3, "Clubs": 2, "Spades": 1}
+
+        if value_volume[self.value] == value_volume[other_card.value]:
+            return suit_value[self.suit] > suit_value[other_card.suit]
+        else:
+            return value_volume[self.value] > value_volume[other_card.value]
 
     def less(self, other_card):
-        ...
+        """
+        Определяет младшую из двух карт по рангу и масти
+        """
+        return not self.more(other_card)
 
 
 class Deck:
-    # TODO-0: сюда копируем реализацию класса колоды из предыдущего задания
-    ...
+    def __init__(self):
+        # Список карт в колоде. Каждым элементом списка будет объект класса Card
+        values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+        suits = ["Hearts", "Diamonds", "Clubs", "Spades"]
+        self.cards = []
+        # TODO-1: конструктор добавляет в список self.cards все(52) карты
+        for suit in suits:
+            for value in values:
+                self.cards.append(Card(value, suit))
+
+    def show(self) -> str:
+        """
+        Возвращает колоду карт в виде строки
+        """
+        str_cards = []
+        for card in self.cards:
+            str_cards.append(card.to_str())
+
+        return f"cards[{len(self.cards)}]: " + ", ".join(str_cards)
+
+    def draw(self, number_of_cards: int) -> list:
+        """
+        Сдаёт определённое число карт на "руку"
+        """
+
+        hand, self.cards = self.cards[:number_of_cards], self.cards[number_of_cards:]
+
+        return hand
+
+    def shuffle(self) -> None:
+        """
+        Перемешивает колоду карт
+        """
+        return random.shuffle(self.cards)
 
 
 # Создаем колоду
