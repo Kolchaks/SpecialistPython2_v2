@@ -6,7 +6,7 @@ class Card:
         self.value = value  # Значение карты(2, 3... 10, J, Q, K, A)
         self.suit = suit  # Масть карты
 
-    def to_str(self):
+    def to_str(self) -> str:
         suit_icons = {"Spades": '\u2660', "Clubs": '\u2663', "Diamonds": '\u2666', "Hearts": '\u2665'}
         return f"{self.value}{suit_icons[self.suit]}"
 
@@ -25,7 +25,7 @@ class Deck:
             for value in values:
                 self.cards.append(Card(value, suit))
 
-    def show(self):
+    def show(self) -> str:
         # TODO-2: Принцип работы данного метода прописан в 00_task_deck.md
         str_cards = []
         for card in self.cards:
