@@ -24,8 +24,12 @@ class Deck:
 
     def show(self):
         # TODO-2: Принцип работы данного метода прописан в 00_task_deck.md
+        str_cards = []
         for card in self.cards:
-            print(f"cards[{len(self.cards)}]: " + "{card.to_str()}", end=' ')
+            str_cards.append(card.to_str())
+
+        return f"cards[{len(self.cards)}]: " + ", ".join(str_cards)
+
 
 # Создаем колоду
 deck = Deck()
