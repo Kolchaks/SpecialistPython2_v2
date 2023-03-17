@@ -33,13 +33,13 @@ class Deck:
 
         return f"cards[{len(self.cards)}]: " + ", ".join(str_cards)
 
-    def draw(self, x: int):
+    def draw(self, x: int) -> list:
         # TODO-1: Принцип работы данного метода прописан в 00_task_deck.md
         hand, self.cards = self.cards[:x], self.cards[x:]
 
         return hand
 
-    def shuffle(self):
+    def shuffle(self) -> None:
         # TODO-2: Принцип работы данного метода прописан в 00_task_deck.md
         return random.shuffle(self.cards)
 
