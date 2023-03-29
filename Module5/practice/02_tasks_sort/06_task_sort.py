@@ -13,3 +13,12 @@
 # 70
 # Пояснение:
 # Возможен такой порядок: 10 2 50 1 10
+
+how_many_pourchases = int(input())  # Количество покупок    
+prices = [random.randint(1, 50) for _ in range(how_many_pourchases)]
+
+prices.sort(reverse = True)
+print(prices)
+max_amount = sum(prices[:(how_many_pourchases + 1) // 2])
+
+print(max_amount)
